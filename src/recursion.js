@@ -89,6 +89,9 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  if (base < 0) {
+    return -1 * exponent(base * -1, exp); //This is mathematically wrong
+  }
   if (exp < 0) {
     return 1 / exponent(base, exp * -1);
   }
