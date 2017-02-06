@@ -36,13 +36,22 @@ var arraySum = function(array) {
   if (!Number.isNaN(+array[0])) {
     return +array[0] + arraySum(array.slice(1));
   }
-  
+
   array[0] = arraySum(array[0]);
   return arraySum(array);
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  if (Math.abs(n) >= 2) {
+    return n > 0 ? isEven(n - 2) : isEven(n + 2);
+  }
+
+  if (Math.abs(n) === 1) {
+    return false;
+  }
+
+  return true;
 };
 
 // 5. Sum all integers below a given integer.
