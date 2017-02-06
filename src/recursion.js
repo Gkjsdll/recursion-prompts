@@ -190,7 +190,7 @@ var multiply = function(x, y) {
   if (y < 0) {
     return 0 - multiply(x, 0 - y);
   }
-  
+
   if (y === 1) {
     return x;
   }
@@ -201,6 +201,28 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
 var divide = function(x, y) {
+
+  if (!y) {
+    return NaN;
+  }
+
+  if (x === y) {
+    return 1;
+  }
+
+  if (x < 0) {
+    return 0 - divide(0 - x, y);
+  }
+
+  if (y < 0) {
+    return 0 - divide(x, 0 - y);
+  }
+
+  if (x < y) {
+    return 0;
+  }
+
+  return 1 + divide(x - y, y);
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
