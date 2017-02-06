@@ -92,6 +92,7 @@ var exponent = function(base, exp) {
   if (base < 0) {
     return -1 * exponent(base * -1, exp); //This is mathematically wrong
   }
+
   if (exp < 0) {
     return 1 / exponent(base, exp * -1);
   }
@@ -102,6 +103,10 @@ var exponent = function(base, exp) {
 
   if (exp === 1) {
     return base;
+  }
+
+  if (exp >= 2) {
+    return base * base * exponent(base, exp - 2);
   }
 
   return base * exponent(base, exp - 1);
