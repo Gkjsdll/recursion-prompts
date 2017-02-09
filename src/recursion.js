@@ -573,6 +573,33 @@ var alternateSign = function(array) {
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+  if (!str.length) {
+    return '';
+  }
+
+  let legend = {
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+  };
+
+  let result = numToText(str.slice(1));
+
+  let firstChar = str.charAt(0);
+  if (firstChar === ' ' || Number.isNaN(+firstChar)) {
+    result = firstChar + result;
+  } else {
+    result = legend[firstChar] + result;
+  }
+
+  return result;
 };
 
 
