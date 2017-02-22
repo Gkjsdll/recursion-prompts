@@ -234,7 +234,7 @@ var gcd = function(x, y) {
   if (x < 0) {
     return null;
   }
-  
+
   if (!x) {
     return y;
   }
@@ -633,7 +633,20 @@ var numToText = function(str) {
 // *** EXTRA CREDIT ***
 
 // 37. Return the number of times a tag occurs in the DOM.
-var tagCount = function(tag, node) {
+var tagCount = function(tag, node=document.getElementsByTagName('body')[0]) {
+  let count = 0;
+
+  if (node.tagName.toLowerCase() === tag.toLowerCase()) {
+    count++;
+  }
+
+  let children = node.children;
+
+  for(let i = 0; i < children.length; i++) {
+    count += tagCount(tag, children[i]);
+  };
+  
+  return count;
 };
 
 // 38. Write a function for binary search.
