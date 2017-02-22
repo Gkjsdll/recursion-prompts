@@ -645,7 +645,7 @@ var tagCount = function(tag, node=document.getElementsByTagName('body')[0]) {
   for(let i = 0; i < children.length; i++) {
     count += tagCount(tag, children[i]);
   };
-  
+
   return count;
 };
 
@@ -653,7 +653,24 @@ var tagCount = function(tag, node=document.getElementsByTagName('body')[0]) {
 // var array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
-var binarySearch = function(array, target, min, max) {
+var binarySearch = function(array, target, min=0, max=array.length-1) {
+  let index = Math.ceil((min + max) / 2);
+
+  if (array[index] === target) {
+    return index;
+  }
+
+  if (min === max - 1) {
+    return array[min] === target ? min : null;
+  }
+
+  if (array[index] < target) {
+    return binarySearch(array, target, index, max);
+  }
+
+  if (array[index] > target) {
+    return binarySearch(array, target, min, index);
+  } 
 };
 
 // 39. Write a merge sort function.
