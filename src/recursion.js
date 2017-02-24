@@ -653,23 +653,26 @@ var tagCount = function(tag, node=document.getElementsByTagName('body')[0]) {
 // var array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
-var binarySearch = function(array, target, min=0, max=array.length-1) {
-  let index = Math.ceil((min + max) / 2);
+var binarySearch = function(array, target) {
+  let index = Math.ceil((array.length - 1) / 2);
 
   if (array[index] === target) {
     return index;
   }
 
-  if (min === max - 1) {
-    return array[min] === target ? min : null;
+  if (array.length === 2) {
+    return array[0] === target ? 0 : null;
   }
 
   if (array[index] < target) {
-    return binarySearch(array, target, index, max);
+    let firstHalf = array.slice(index);
+    let subSearch = binarySearch(firstHalf, target);
+    return subSearch === null ? null : subSearch + index;
   }
 
   if (array[index] > target) {
-    return binarySearch(array, target, min, index);
+    let secondHalf = array.slice(0, array.length - index);
+    return binarySearch(secondHalf, target)
   } 
 };
 
