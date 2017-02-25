@@ -690,22 +690,21 @@ var mergeSort = function(array) {
   let rightSide = mergeSort(array.slice(midpoint));
 
   let newArray = [];
-  while (leftSide.length && rightSide.length) {
-    if (rightSide[0] < leftSide[0]) {
-      newArray.push(...rightSide.splice(0, 1));
+  for(let i = 0, j = 0; i < leftSide.length || j < rightSide.length;) {
+    if (leftSide[i] === undefined) {
+      return newArray.concat(rightSide.slice(j, rightSide.length));
+    }
+
+    if (rightSide[j] === undefined) {
+      return newArray.concat(leftSide.slice(i, leftSide.length));
+    }
+
+    if (rightSide[j] < leftSide[i]) {
+      newArray.push(rightSide[j++]);
     } else {
-      newArray.push(...leftSide.splice(0, 1));
+      newArray.push(leftSide[i++]);
     }
   }
-
-  if (!leftSide.length) {
-    newArray.push(...rightSide);
-  }
-
-  if (!rightSide.length) {
-    newArray.push(...leftSide);
-  }
-  return newArray;
 };
 
 // 40. Deeply clone objects and arrays.
