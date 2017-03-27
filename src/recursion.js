@@ -43,11 +43,13 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  if (Math.abs(n) >= 2) {
-    return n > 0 ? isEven(n - 2) : isEven(n + 2);
+  n = Math.abs(n);
+
+  if (n >= 2) {
+    return isEven(n - 2);
   }
 
-  if (Math.abs(n) === 1) {
+  if (n === 1) {
     return false;
   }
 
