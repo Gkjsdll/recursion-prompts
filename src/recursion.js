@@ -245,7 +245,7 @@ var gcd = function(x, y) {
     return gcd(y, x);
   }
 
-  let quotient = Math.floor(x/y);
+  let quotient = Math.floor(x / y);
   let remainder = x % y;
 
   return gcd(y, remainder);
