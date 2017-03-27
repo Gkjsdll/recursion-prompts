@@ -208,10 +208,6 @@ var divide = function(x, y) {
     return NaN;
   }
 
-  if (x === y) {
-    return 1;
-  }
-
   if (x < 0) {
     return 0 - divide(0 - x, y);
   }
