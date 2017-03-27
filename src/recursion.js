@@ -65,10 +65,10 @@ var sumBelow = function(n) {
   }
 
   if (n > 0) {
-    return n - 1 + sumBelow(n - 1);
+    return --n + sumBelow(n);
   }
 
-  return n + 1 + sumBelow(n + 1);
+  return ++n + sumBelow(n);
 };
 
 // 6. Get the integers within a range (x, y).
