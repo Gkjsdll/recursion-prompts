@@ -141,12 +141,12 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-  string = string.trim().toLowerCase();
+  string = string.trim();
   if (string.length === 1 || !string.length) {
     return true;
   }
 
-  if (string.slice(0, 1) !== string.slice(-1)) {
+  if (string.slice(0, 1).toLowerCase() !== string.slice(-1).toLowerCase()) {
     return false;
   }
 
