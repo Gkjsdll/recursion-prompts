@@ -347,8 +347,7 @@ var rMap = function(array, callback) {
     return [];
   }
 
-  let results = [];
-  results.push(callback(array[0]));
+  let results = [callback(array[0])];
   return results.concat(rMap(array.slice(1), callback));
 };
 
