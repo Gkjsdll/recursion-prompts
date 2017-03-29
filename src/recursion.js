@@ -628,13 +628,9 @@ var tagCount = function(tag, node=document.getElementsByTagName('body')[0]) {
     count++;
   }
 
-  let children = node.children;
+  let children = Array.prototype.slice.call(node.children);
 
-  for(let i = 0; i < children.length; i++) {
-    count += tagCount(tag, children[i]);
-  };
-
-  return count;
+  return children.reduce((sum, child) => sum + tagCount(tag, child), count);
 };
 
 // 38. Write a function for binary search.
