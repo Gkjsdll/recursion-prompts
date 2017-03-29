@@ -664,7 +664,6 @@ var binarySearch = function(array, target) {
 // mergeSort([34,7,23,32,5,62]) // [5,7,23,32,34,62]
 // https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms
 var mergeSort = function(array) {
-  console.log(array);
   if (array.length < 2) {
     return array;
   }
@@ -676,11 +675,11 @@ var mergeSort = function(array) {
   let newArray = [];
   for(let i = 0, j = 0; i < leftSide.length || j < rightSide.length;) {
     if (leftSide[i] === undefined) {
-      return newArray.concat(rightSide.slice(j, rightSide.length));
+      return newArray.concat(...rightSide.slice(j));
     }
 
     if (rightSide[j] === undefined) {
-      return newArray.concat(leftSide.slice(i, leftSide.length));
+      return newArray.concat(leftSide.slice(i));
     }
 
     if (rightSide[j] < leftSide[i]) {
