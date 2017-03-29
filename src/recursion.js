@@ -697,7 +697,7 @@ var mergeSort = function(array) {
 // obj1 === obj2 // false
 var clone = function(input) {
   if (Array.isArray(input)) {
-    return input.map(val => (clone(val)));
+    return input.map(val => clone(val));
   }
 
   if (typeof input === 'object') {
