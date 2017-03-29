@@ -594,7 +594,18 @@ var numToText = function(str) {
     return '';
   }
 
-  let legend = {
+  let result = numToText(str.slice(1));
+
+  let firstChar = str.charAt(0);
+  if (firstChar === ' ' || Number.isNaN(+firstChar)) {
+    result = firstChar + result;
+  } else {
+    result = numToText.legend[firstChar] + result;
+  }
+
+  return result;
+};
+numToText.legend = {
     0: 'zero',
     1: 'one',
     2: 'two',
@@ -606,19 +617,6 @@ var numToText = function(str) {
     8: 'eight',
     9: 'nine',
   };
-
-  let result = numToText(str.slice(1));
-
-  let firstChar = str.charAt(0);
-  if (firstChar === ' ' || Number.isNaN(+firstChar)) {
-    result = firstChar + result;
-  } else {
-    result = legend[firstChar] + result;
-  }
-
-  return result;
-};
-
 
 // *** EXTRA CREDIT ***
 
