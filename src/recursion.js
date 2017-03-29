@@ -518,7 +518,7 @@ var letterTally = function(str, obj = {}) {
     obj[char]++;
     letterTally(str.slice(1), obj);
   }
-  
+
   return obj;
 };
 
@@ -554,21 +554,18 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
   let result = [];
-  let i = 0;
-  while (array[i]) {
+  for (var i = 0; array[i]; i++) {
     result.push(array[i]);
-    i++;
   }
   if (array[i] === 0) {
     result.push(0);
-    while(array[i] === 0 && array[i + 1] === 0) {
+    while (array[i + 1] === 0) {
       i++;
     }
   }
-  if (i && array.length > i) {
+  if (array.length > i) {
     result = result.concat(minimizeZeroes(array.slice(i + 1)));
   }
-
   return result;
 };
 
